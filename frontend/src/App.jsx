@@ -1,3 +1,4 @@
+// Main application component — handles page routing between Movies, Categories and Classifications
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useState } from 'react'

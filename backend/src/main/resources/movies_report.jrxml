@@ -27,10 +27,10 @@
 			<element kind="textField" uuid="a1b2c3d4-e5f6-7890-abcd-ef1234567896" x="0" y="0" width="60" height="20" fontSize="11.0" hTextAlign="Center" vTextAlign="Middle">
 				<expression><![CDATA[$F{id}]]></expression>
 			</element>
-			<element kind="textField" uuid="a1b2c3d4-e5f6-7890-abcd-ef1234567897" x="60" y="0" width="195" height="20" fontSize="11.0" vTextAlign="Middle">
+			<element kind="textField" uuid="a1b2c3d4-e5f6-7890-abcd-ef1234567897" x="60" y="0" width="195" height="20" fontSize="11.0" hTextAlign="Center" vTextAlign="Middle">
 				<expression><![CDATA[$F{title}]]></expression>
 			</element>
-			<element kind="textField" uuid="a1b2c3d4-e5f6-7890-abcd-ef1234567898" x="255" y="0" width="200" height="20" fontSize="11.0" vTextAlign="Middle">
+			<element kind="textField" uuid="a1b2c3d4-e5f6-7890-abcd-ef1234567898" x="255" y="0" width="200" height="20" fontSize="11.0" hTextAlign="Center" vTextAlign="Middle">
 				<expression><![CDATA[$F{director}]]></expression>
 			</element>
 			<element kind="textField" uuid="a1b2c3d4-e5f6-7890-abcd-ef1234567899" x="455" y="0" width="100" height="20" fontSize="11.0" hTextAlign="Center" vTextAlign="Middle">
