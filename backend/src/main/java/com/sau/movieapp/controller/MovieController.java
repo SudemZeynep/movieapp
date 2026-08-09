@@ -33,24 +33,24 @@ public class MovieController {
     public MovieController(MovieRepository movieRepository) {
         this.movieRepository = movieRepository;
     }
-// tüm filmlei getir
+// get all movies from the database
     @GetMapping(value = "", produces = "application/json")
     public ResponseEntity<List<Movie>> getAll() {
         return new ResponseEntity<>(movieRepository.findAll(), HttpStatus.OK);
     }
-
+// get a movie by id from the database
     @GetMapping(value = "/get/{id}", produces = "application/json")
     public ResponseEntity<Movie> getById(@PathVariable Long id) {
         Movie movie = movieRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Movie not found: " + id));
         return new ResponseEntity<>(movie, HttpStatus.OK);
     }
-// yeni film ekliyoruz
+// adding a new movie to the database
     @PostMapping(value = "/add", consumes = "application/json", produces = "application/json")
     public ResponseEntity<Movie> add(@RequestBody Movie movie) {
         return new ResponseEntity<>(movieRepository.save(movie), HttpStatus.CREATED);
     }
-// film güncelliyoruz
+// updating an existing movie in the database
     @PutMapping("/update/{id}")
     public ResponseEntity<Movie> update(@PathVariable Long id, @RequestBody Movie movie) {
         Movie m = movieRepository.findById(id)
@@ -60,7 +60,7 @@ public class MovieController {
         m.setYear(movie.getYear());
         return new ResponseEntity<>(movieRepository.save(m), HttpStatus.OK);
     }
-// siliyoruz
+//  deleting a movie from the database
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         movieRepository.findById(id)
@@ -68,7 +68,7 @@ public class MovieController {
         movieRepository.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-// resim yükleme - resim dosyasını uploads klasörüne kaydediyoruz
+// image upload - uploads the image to the uploads folder and saves the filename in the database
     @PostMapping("/upload/{id}")
     public ResponseEntity<Movie> uploadImage(@PathVariable Long id,
                                               @RequestParam("file") MultipartFile file) throws IOException {
@@ -87,7 +87,7 @@ public class MovieController {
         movie.setImageName(filename);
         return new ResponseEntity<>(movieRepository.save(movie), HttpStatus.OK);
     }
-// resim indirme - uploads klasöründen resmi okuyup döndürüyoruz
+// image download - downloads the image from the uploads folder
     @GetMapping("/image/{id}")
     public ResponseEntity<Resource> downloadImage(@PathVariable Long id) throws MalformedURLException {
         Movie movie = movieRepository.findById(id)
